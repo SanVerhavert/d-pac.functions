@@ -32,6 +32,10 @@ describe( 'pm', () =>{
       const f = pm.reliabilityFunctor( accessor, ( item )=>item.se );
       expect( f( fx.reliabilityFunctor.accessor.list ) ).to.equal( fx.reliabilityFunctor.accessor.expected );
     } );
+    it( 'should match R results', ()=>{
+      const f = pm.reliabilityFunctor( accessor, ( item )=>item.se );
+      expect( f( fx.reliabilityFunctor.fromR.list ).toFixed(7) ).to.equal( fx.reliabilityFunctor.fromR.expected );
+    } );
   } );
   describe( '.rasch()', ()=>{
     it( 'should function correctly', ()=>{
