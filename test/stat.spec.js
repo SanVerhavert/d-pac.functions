@@ -11,6 +11,7 @@ const fx = require('./fixtures');
 const stat = require('../stat');
 
 const accessor = (item) => item.value;
+const accessorSE = (item) => item.se;
 
 function createFixtures(objectMap) {
   return {
@@ -79,6 +80,10 @@ describe('stat', () => {
       expect(stat.mean(items.objectMap, accessor))
           .to.equal(fx.mean.expected);
     });
+    it('should function correctly with dot values', () => {
+      expect(Number(stat.mean(fx.dotValues.list, accessor).toFixed(7)))
+          .to.equal(fx.dotValues.expected.mean);
+    });
   });
   describe('.variance()', () => {
     const items = createFixtures(fx.variance.items);
@@ -98,7 +103,10 @@ describe('stat', () => {
     it('should function correctly with maps of objects', () => {
       expect(stat.variance(items.objectMap, accessor)).to.equal(fx.variance.expected);
     });
-
+    it('should function correctly with dot values', () => {
+      expect(Number(stat.variance(fx.dotValues.list, accessor).toFixed(7)))
+          .to.equal(fx.dotValues.expected.var);
+});
   });
   describe('.sd()', () => {
     const items = createFixtures(fx.sd.items);
@@ -121,6 +129,10 @@ describe('stat', () => {
     it('should function correctly with maps of numbers', () => {
       expect(stat.sd(items.objectMap, accessor))
           .to.equal(fx.sd.expected);
+    });
+    it('should function correctly with dot values', () => {
+      expect(Number(stat.sd(fx.dotValues.list, accessor).toFixed(7)))
+          .to.equal(fx.dotValues.expected.sd);
     });
   });
   describe('.rms()', () => {

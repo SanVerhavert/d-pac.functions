@@ -32,9 +32,9 @@ describe( 'pm', () =>{
       const f = pm.reliabilityFunctor( accessor, ( item )=>item.se );
       expect( f( fx.reliabilityFunctor.accessor.list ) ).to.equal( fx.reliabilityFunctor.accessor.expected );
     } );
-    it( 'should match R results', ()=>{
+    it( 'should function correctly with dot values', ()=>{
       const f = pm.reliabilityFunctor( accessor, ( item )=>item.se );
-      expect( f( fx.reliabilityFunctor.fromR.list ).toFixed(7) ).to.equal( fx.reliabilityFunctor.fromR.expected );
+      expect( Number( f( fx.dotValues.list ).toFixed(7) ) ).to.equal( fx.dotValues.expected.reliability );
     } );
   } );
   describe( '.rasch()', ()=>{
